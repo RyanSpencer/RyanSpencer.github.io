@@ -1,0 +1,179 @@
+[
+	{
+		"name": "Orbit Rings",
+		"image": "images/BumperCar.png",
+		"description": "Multiplayer JavaScript physics-based game that supports multiple rooms and 8 player multiplayer.",
+		"details": "Orbit Rings is a multiplayer physics-based game developed in JavaScript to run through canvas. The primary loop involves playing as planets driving around bumper cars trying to hit each other to deal damage, with the more damage being dealt based on how much speed the player hitting has over the player being hit. The game was originally developed as a simple JavaScript app, later being updated as part of a 3 person project to bring it into node and introducing a room system built with sockets, where players can host and join separate rooms of up to 8. The game also has mocked up design for banner ads for a hypothetical pay model, and has royalty free music along with custom made graphics. ",
+		"git": "https://github.com/RyanSpencer/Orbit-Rings",
+		"link": "https://orbitringsfinal.herokuapp.com/",
+		"tags": [
+			"javascript",
+			"multiplayer",
+			"group",
+			"sockets",
+			"node",
+			"html & css"
+		]
+	},
+	{
+		"name": "How to Discover New Anime",
+		"image": "images/Anime1.png",
+		"gallery": ["images/Anime1.png", "images/Anime2.png", "images/Anime3.png"],
+		"description": "Simple website meant to show off a simple tutorial.",
+		"details": "How to Discover New Anime is a website coded during 2016 as a project for Web Design and Development. I chose the subject matter based on a panel I led at ToraCon 2016 on Anime. The website is coded entirely in HTML and CSS, worked on in notepad. All images used were cited on the documentation page. The design uses a triad of colors that work well together and different shades of those colors to create a design that is eye popping but still visually pleasing. The Center based design uses only the middle of the screen to make it easier to react to different screen sizes. The Text on white on red allows each step to feel distinct while having the text easily readable. The text is also slightly blue to work well with the overall background. The nav bar used a styled list of links to replicate the feeling of buttons.",
+		"link": "https://spencer-portfolio.com/project1/index.html",
+		"tags": [
+			"html & css"
+		]
+	},
+	{
+		"name": "Asteroids",
+		"image": "images/Flatspace1.png",
+		"description": "A re-creation of the classic arcade game Asteroids done to learn Java.",
+		"details": "Asteroids was developed by me as a personal/class project during my senior year of high school, in 2014. This game is based in Java using a drawing class created by Stanford University that was publicly available for download. The game is a copy of Asteroids, with a slight variation of having different types of enemies and levels. The game has the player constantly shooting towards the cursor, represented by a circle, with the ability to click and hold to move the player towards the cursor. There are several different enemies that attack the players, normal asteroids or squares who die in one hit, large squares who can get hit 3 times before dying, Stars which get hit once a break into 3 smaller triangles, and an enemy craft which shoots at the player and takes 5 hits. Enemies on death can randomly drop 1 of 2 powerups, 1 of which increases bullet velocity, one of which increases number of bullets spawned. The number of enemies and which enemies spawn change as level increases, which happens at 50 points and then every 100 points. The game also contains different texture packs which can be switched out on the main menu, and a permanent high score system.",
+		"link": "https://www.youtube.com/embed/2V-0r6kzoVQ",
+		"tags": [
+			"java"
+		]
+	},
+	{
+		"name": "Snake",
+		"image": "images/Snake3.png",
+		"description": "A re-creation of the classic arcade game Snake created to learn Java.",
+		"details": "Snake was developed by me as a class project during my senior year of high school. The game is also based on Java with the inclusion of a class for drawing to the screen created by Stanford University that was publicly available to download. The game is functionally the same as Snake, the player repeatedly collecting pieces of itself to move longer and longer. The development was primarily a lesson in arrays and sequencing that was helpful towards learning early programming concepts.",
+		"tags": [
+			"java"
+		]
+	},
+	{
+		"name": "Audio Visualizer",
+		"image": "images/AudioVis.png",
+		"description": "An HTML page that utilizes an algorithm to visualize music in a way that is customized to the user.",
+		"details": "Audio Visualizer is a project I created in 2016 for Rich Media Web Development. Using given algorithms that can interpret music data and return frequency information, the web app shows designs based on that data and other fun interactions. Options included allowing the user to activate or deactivate various functions. Another main function includes a KIDZ BOP filter that will attempt to play a KIDZ BOP version of what track is playing if possible. The website has minimal HTML and CSS and mostly works through JavaScript editing the canvas.",
+		"link": "https://spencer-portfolio.com/web-audio-prototype/index.html",
+		"tags": [
+			"javascript",
+			"html & css"
+		]
+	},
+	{
+		"name": "Harlem Coin Hero",
+		"image": "images/HarlemCoin.png",
+		"description": "A game jam 2nd platformer created over a 72 hour time period in Unity based on the theme of Everyday Heroes.",
+		"details": "Harlem Coin Hero was made for the Herojam gamejam in Unity. The game is a 2d platformer that involves using a character with two coin-based abilities they can flip back and forth from. The game included Near finished gameplay mechanics, UI, a modeled main character, and an entire first level. The game was made in 72 hours in a team of 5, with my focus being on UI design and implementation.",
+		"link": "vueportfolio/data/Coin_Flip_Hero/conflip.html",
+		"git": "https://github.com/Likewise42/HeroJam2k17",
+		"tags": [
+			"unity",
+			"c#",
+			"group",
+			"gamejam"
+		]
+	},
+	{
+		"name": "Osu to Anichart",
+		"image": "images/OsuToMal.png",
+		"description": "A Web app designed to utilize to data from one API to query the other API.",
+		"details": "MAL to Osu is a web app that takes APIs for myanimelist.com and Osu and searches for recent ranked Osu maps based on their source. The sources it searches for are the anime that the user has on their myanimelist.com account. Most of the work is done in JavaScript converting xml and json data into information that can be displayed on the webpage. After MAL brought down their API until further notice I transferred the application to work with popular competitor AniChart. The change also removed the need to parse xml as AniChart sends all information in JSON. I also extended functionality by changing to capture the last twenty weeks’ worth of maps and parse them instead of just the top 500. This is still a temporary measure due to the failure of the Osu API to allow search by source, but it results in more information than previous solutions.",
+		"link": "https://mal-to-osu-app.herokuapp.com/",
+		"git": "https://github.com/RyanSpencer/AniToOsu",
+		"tags": [
+			"javascript",
+			"html & css",
+			"node",
+			"API"
+		]
+	},
+	{
+		"name": "Gifful",
+		"image": "images/Giffull.png",
+		"description": "Multiplayer Web app that allows players to play a short drawing-based game.",
+		"details": "I created this game in early 2017 for my Real Time Web Development class. The game is based off the game Drawful for the Jackbox Party Pack. In this game, players each draw a picture based of a small prompt. Then one at a time, all the other players see the image and enter a guess as to what the image is. Next, all guesses are displayed along with the correct answer and the players must guess what the correct answer is. This differs by the game using shorts gifs, having the player draw 20 frames that are played at about 10 frames per second for a total of 2 seconds. The game was programmed in JavaScript with NPM and socket.io to connect players.",
+		"link": "https://giffull.herokuapp.com",
+		"git": "https://github.com/RyanSpencer/RealTimeProject1",
+		"tags": [
+			"javascript",
+			"html & css",
+			"node",
+			"sockets",
+			"multiplayer"
+		]
+	},
+	{
+		"name": "Paul and the Yum Yum Crew: The Eternal Search",
+		"image": "images/Paul1.png",
+		"gallery": ["images/Paul1.png", "images/Paul2.png", "images/Paul3.png", "images/Paul4.png", "images/Paul5.png" ],
+		"description": "2d Puzzle Platformer Group Project about swapping the main character between life and death to solve puzzles.",
+		"details": "Paul and the Yum Yum Crew: The Eternal Search is a MonoGame based C# project made for Game Design and Algebraic Problem Solving 2. I was part of a 5-person team working on this project for a couple months in 2015. The game is a puzzle platformer starring Paul, as he makes his way through his limbo he is stuck in. The game's uniqueness revolves around the death mechanic, as there is no real death in the game, the player instead switches between life and death in a limbo. The player can only interact with certain objects and only see certain things or enemies while alive or dead, and thus must use the switch from life and death to progress through the level. The game is level based with each level being designed using symbols in notepad, which are then read in by the program and created using each symbol as a new object. The player wins when they complete all the levels. Game Leadership by Rochelle Cohn, I did overall programming and collision, Nathaniel Sun created the program for the level builder, GUI was created by Zachary Micheals, Art was created by Jia Wessen.",
+		"git": "https://github.com/SulfuricSulfur/UGWCodeProj",
+		"tags": [
+			"c#",
+			"group"
+		]
+	},
+	{
+		"name": "Prime Materia",
+		"image": "images/Prime Materia Box Art.png",
+		"description": "A deck builder tabletop game themed around alchemy and the philosopher's stone with a unique aspect to how cards are played and resolved",
+		"details": "Prime Materia is a deck builder tabletop game I developed in a group with Ryan Muskopf, Muriel Hagge, and James McQuaid. The game is for 1-4 Players, and focuses on discovering the philosopher’s stone, by combining different formulas of elements together to score points. The Primary game loop revolved around using your hand to chain cards on top of one another, with each card having a color, and a set of up to three spaces where cards of specific colors could be played. After playing cards the players can buy from a random selection of cards based on how far along the game is. The game ends with someone having the philosopher’s stone card, this starts the final round, players add up score and highest score wins. This game went through large amounts of wide playtesting, prototyping and even has had a formal version made with Game Crafter. I worked on all areas of game balance and design, including card creation and balancing, but especially lead on designing the rule book in InDesign.",
+		"tags": [
+			"group",
+			"tabletop",
+			"indesign"
+		]
+	},
+	{
+		"name": "Madman Protocol",
+		"image": "images/Poster.png",
+		"description": "A tabletop RPG themed around espionage and groups of elite covert operatives going on missions in an alternative modern world.",
+		"details": "Madman Protocol is a Tabletop RPG system designed around the idea of working as covert operatives going on missions to perform a variety of top-secret work. Work involved balancing the different aspects of the game, and designing the entire book in InDesign, along with the character sheet.",
+		"link": "https://www.drivethrurpg.com/product/228671/Madman-Protocol",
+		"tags": [
+			"group",
+			"tabletop",
+			"indesign"
+		]
+	},
+	{
+		"name": "Gatchamonogatari",
+		"image": "images/gatchamonogatari.png",
+		"description": "A user account-based application using a database back end to store information for users and using Redis to keep session data.",
+		"details": "Gatchamonogatari is full stack web application, backboned by a user registration system. The user accounts are stored permanently in the database, along with various information about their account. Redis is used to persist a user login and allow them to retain a session id. The webpage uses a web templates that use dynamic web component built with React. It also uses cserf to securely communicate occasionally between the server and client.",
+		"link": "https://gatchamonogatari.herokuapp.com",
+		"git": "https://github.com/RyanSpencer/RichMediaProject2",
+		"tags": [
+			"javascript",
+			"html & css",
+			"node",
+			"MVC",
+			"Redis",
+			"Mongoose",
+			"React",
+			"Handlebars"
+		]
+	},
+	{
+		"name": "Fire Emblem Heroes Team Builder",
+		"image": "images/FireEmblemHeroes.png",
+		"description": "A team builder app for the Fire Emblem Heroes mobile game that uses API to fetch data, and then crunches the data to create a series of inputs the user can edit, which is then encrypted and saved locally.",
+		"details": "This is a team builder using an API that gathers data about Fire Emblem Heroes Characters. The application allows you to build 4 person teams and temporarily store them. The majority of the work was spent on utilizing the data from the API and applying restrictions on the attributes of the heroes to only allow heroes to equip skills they have access to.",
+		"link": "https://fire-emblem-heroes-team-builde.herokuapp.com",
+		"git": "https://github.com/RyanSpencer/RichMediaProject1",
+		"tags": [
+			"javascript",
+			"html & css",
+			"API"
+		]
+	},
+	{
+		"name": "A Particular Set of Skills",
+		"image": "images/Board Art.png",
+		"description": "A tabletop board game with a theme around infiltrating a secret compound to complete objectives with other players and escape, while avoiding Guards.",
+		"details": "This game is a tabletop co-op board game developed in a group with Ryan Muskopf, Muriel Hagge, and James McQuaid. The game is hex based game for 4-6 players, and invovles each player taking up a character with unique abilities trying to naviage around a map while collecting objectives and avoiding npc guards controlled by a pre-determined series of rules carried out by the player. The game focuses on allowing each character to shine by giving them a niche to be useful in, balanced by the fact that in the game players are not allowed to share game information unless they are adjacent to one another. This is also served to limit the commander problem, the common issue in multiplayer games where one player acts in charge of the others and determines all of their actions. The primary loop involves players moving and using actions in order to advance towards the various objectives around the map, followed by the guards taking a predetermined route and scanning for players. ",
+		"tags": [
+			"group",
+			"tabletop",
+			"indesign"
+		]
+	}
+]

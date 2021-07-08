@@ -1,0 +1,225 @@
+.header {
+    background-image: url("data/images/header.jpg");
+    background-size: cover;
+    background-position: 50%;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    display: flex;
+    min-height: 68vh;
+    margin-left: 0px;
+}
+
+.headerContentWrapper {
+    width: 100%;
+    display: flex;
+    position: relative;
+    padding: 78px;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    background-color: #01090D;
+    margin:auto
+}
+
+.headerWordWrap {
+    width: 100%;
+    position: relative;
+    text-align: right;
+    box-sizing: border-box;
+    color: #114A62;
+}
+
+.headerWordWrap > * {
+    font-weight: 600;
+    font-family: "Roboto", Sans-serif;
+}
+
+.headerWordWrap > h1 {
+    font-size: 70px;
+    font-family: "Roboto Slab", Sans-serif;
+}
+
+.img-background {
+    background-color: darkgrey;
+    height: 15rem;
+    background-position: center;
+    background-size: cover;
+}
+.container-fluid {
+    padding: 0;
+}
+.jumbotron {
+    margin-bottom: 0px;
+    text-align: center;
+    padding: 75px 50px
+}
+.rating-name {
+    font-size: 1.5em;
+}
+.rating {
+    margin: 10px;
+}
+.rating svg {
+    font-size: 2rem;
+}
+.ratingsList {
+    padding: 0px
+}
+.bi {
+    margin-bottom: 1.5rem;
+}
+
+.git-image {
+    width: 3rem;
+}
+.pastWork {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px;
+    color: #658DA6;
+    font-weight: 600 !important;
+}
+.pastWork h5, .pastWork h3 {
+    font-weight: 600;
+}
+.pastWorkWrapper {
+    background-color: #1A3140;;
+}
+.tech-ability-header {
+    text-align: center;
+    margin: 45px;
+    padding-bottom: 30px;
+}
+
+.col > .list-group-item  {
+    border-width: 2px;
+    box-shadow: 0px 0px 10px
+}
+.row >.list-group-item {
+    border-width: 2px;
+}
+
+.row >.list-group-item  + .list-group-item {
+    border-top-width: 1px;
+}
+
+.techScale {
+    box-shadow: 0px 0px 10px;
+    padding: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.badge {
+    margin: 5px;
+}
+.projectSection {
+    background: #1A3140;
+    padding: 25px;
+    
+}
+.projectSection > ul {
+    max-width: 50vw;
+    margin: auto;
+    padding: 0px;
+}
+#dropdownContent {
+    padding: 20px 10px;
+}
+.bottom {
+    background-color: #01090D;
+    width: 100%;
+    padding: 25px;
+    color: #658DA6;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+}
+
+.btn-linkedIn {
+    padding: 12px;
+}
+
+.btn-primary svg{
+    font-size:0.5rem;
+    margin-bottom: 0px;
+}
+
+.btn-primary {
+    background-color: #658DA6;
+    border: none;
+    transition: .3s;
+}
+
+.btn-primary:hover {
+    background-color: #2A4759;
+    transform:scale(1.1);
+}
+
+.bottom h3 {
+    margin-bottom: 0px;
+}
+
+.bottom-name {
+    flex-grow: 2;
+    text-align: right;
+}
+
+.bottom-num {
+    flex-grow: 3;
+}
+
+.bottom-btn {
+    flex-grow: 2;
+    text-align: left;
+}
+
+@media(max-width: 1920px) {
+    .projectSection > ul {
+        max-width: 66vw;
+    }
+}
+@media(max-width: 1620px) {
+    .projectSection > ul {
+        max-width: 75vw;
+    }
+}
+@media(max-width: 1280px) {
+    .projectSection > ul {
+        max-width: none;
+    }
+}
+@media (max-width: 991px) {
+    .container {
+        max-width: none;
+    }
+}
+@media (max-width: 625px) {
+    .ratingsList > div {
+        padding: 0px;
+    }
+    .headerContentWrapper {
+        padding: 30px;
+    }
+  
+    .headerContentWrapper h1, .headerContentWrapper h2 {
+        text-align: center;
+    }
+    .bottom {
+        padding: 25px 5px;
+    }
+
+    .bottom h3 {
+        font-size: 1.5rem;
+    }
+    .btn-linkedIn {
+        padding: 5px;
+    }    
+}
+@media (max-width: 400px) {
+    .bottom h3 {
+        font-size: 1.25rem;
+    }
+}

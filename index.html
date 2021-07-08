@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ryan Spencer Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons">
+    <link rel="stylesheet" href="vueportfolio/main.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="vueportfolio/js/app.js"></script>
+</head>
+<body>
+    <div class="container-fluid" id="mainApp">
+        <div class="row header">
+            <div class="headerContentWrapper">
+                <div class="headerWordWrap">
+                    <h1>Ryan Spencer</h1>
+                </div>
+                <div class="headerWordWrap">
+                    <h2>Portfolio 2021</h3>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="jumbotronContents">
+                <h1 class="display-4">Welcome to my portfolio!</h1>
+                <p class="lead">I'm Ryan Spencer, a software, web, and game developer. This is my portfolio where you can view a selection of projects that I am proud of.</p>
+                <hr class="my-4">
+                <p> Please contact me via email or LinkedIn</p>
+                <a class="btn btn-primary" href="mailto:kuishanya@gmail.com" role="button" target="_blank">Email Me</a>
+                <a class="btn btn-primary" href="https://www.linkedin.com/in/ryan-spencer-a32331a4/" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+        <div class = "pastWorkWrapper">
+            <div class = "pastWork container">
+                <h3>Past Work Experience</h3>
+                <h5>Mindex Technologies</h5>
+                <p>August 2018 - Present </p>
+                    <ul>
+                        <li>
+                            Develop web solutions in an Agile format for Paychex
+                        </li>
+                        <li>
+                            Work and Ship multiple projects, working across multiple types of projects with cross team dependencies and collobration with multiple inter company groups
+                        </li>
+                        <li>
+                            Mentoring under leadership to learn aspects of runnning a Scrum team and managing team morale
+                        </li>
+                        <li>
+                            Learning under senior Leadership, developing new skills and learning new technologies 
+                        </li>
+                    </ul>
+    
+                <h5>
+                    G3 Technologies
+                </h5>
+                <p>
+                    Summer (June - August) 2014, 2015, 2017
+                </p>
+                    <ul>
+                        <li>
+                            Developed prototype using a java interface to create responsive data driven web pages
+                        </li>
+                        <li>
+                            Expanded existing webpages to add functionality and provided additional settings
+                        </li>
+                        <li>
+                            Instantiated Linux Servers and initiated transferring regression testing suites to an automatic Linux solution
+                        </li>
+                    </ul>
+    
+                <h5>
+                    Emagination Summer Camp
+                </h5>
+                <p>
+                    Summer (June - August) 2016
+                </p>
+                    <ul>
+                        <li>
+                            Taught classes on Unity, Gamemaker, and Level Design for multiple age levels
+                        </li>
+                        <li>
+                            Responsible for leadership, protection, and guidance of groups of kids between the ages of 8-18
+                        </li>
+                        <li>
+                            Provided 1 on 1 guidance to individual students as needed
+                        </li>
+                    </ul>
+            <a class="btn btn-primary resume-button" role="button" href="vueportfolio/data/Ryan_Spencer_Resume_2021.pdf" target="_blank">Download Resume</a>
+            </div>
+        </div>
+        <div>
+            <h2 class="tech-ability-header">How comfortable am I with this piece of technology?</h2>
+            <div class="container">
+                <ul class="row techScale" v-bind:class="[techKeyColumns]">
+                    <li class="list-group-item col">
+                        <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-reception-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2zm4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                        <p>I have used this before, and understand the very basics</p>
+                    </li>
+                    <li class="list-group-item col">
+                        <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-reception-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-5zm4 5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                        <p>I have used this multiple times, and can begin to work more complex problems with it</p>
+                    </li>
+                    <li class="list-group-item col">
+                        <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-reception-3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-5zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-8zm4 8a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                        <p>I have used this extensively, and have a strong familiarity with most of its workings</p>
+                    </li>
+                    <li class="list-group-item col">
+                        <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-reception-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-5zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-8zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-11z"/>
+                        </svg>
+                        <p>I have used this extensively and have professional experience using it</p>
+                    </li>
+                </ul>
+                <ul class="row ratingsList" v-bind:class="[techColumns]">
+                    <rating-line 
+                        v-for="rating in ratings"
+                        v-bind:rating="rating"
+                        v-bind:key="rating.name"
+                    > </rating-line>
+                </ul>
+            </div>
+        </div>
+        <div class="projectSection">
+            <div v-if="activeFiltering" class="alert alert-info" role="alert">
+                Hey! My Projects are currently being filtered by tags, if you'd like to see everything again, click <button type="button" class="btn btn-outline-primary btn-sm" onclick="emptyChecks()">here</button>
+            </div>
+            <search-tags
+                v-bind:taglist="taglist">
+            </search-tags>
+            <ul>
+                <div class="row" v-bind:class="[projectColumns]">
+                    <portfolio-work
+                        v-for="project in projects"
+                        v-if="project.shown"
+                        v-bind:project="project"
+                        v-bind:key="project.name"
+                    ></portfolio-work>
+                </div>
+            </ul>
+            <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="detailModalLabel">{{modalInfo.name}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="modalCarousel" class="carousel slide" data-ride="carousel" v-if="modalInfo.gallery">
+                                <div class="carousel-inner">
+                                  <div v-for="(image, index) in modalInfo.gallery" v-bind:class="{ active: index === 0, 'carousel-item': true}">
+                                      <img v-bind:src="'data/' + image" class="d-block w-100" alt="...">
+                                  </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#modalCarousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                  </a>
+                                  <a class="carousel-control-next" href="#modalCarousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                  </a>
+                              </div>
+                            <div id="modalImage" v-else>
+                                <img v-bind:src="'vueportfolio/data/' + modalInfo.image" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="modal-details">{{modalInfo.details}}</div>
+                            <div class="modal.tags">
+                                    <h5><span v-for="tag in modalInfo.tags" class="badge badge-info">{{tag}}</span></h5>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a v-if="modalInfo.link" v-bind:href="modalInfo.link" class="btn btn-info" target="_blank">Link</a>
+                            <a v-if="modalInfo.git" v-bind:href="modalInfo.git" target="_blank">
+                                <img class="git-image" src="vueportfolio/data/images/Github.png">
+                            </a>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <h3 class="bottom-name">Ryan Spencer</h3>
+            <h3 class="bottom-num">240 405 8877</h3>
+            <div class="bottom-btn">
+                <button type="button" onclick="window.open('https://www.linkedin.com/in/ryan-spencer-a32331a4/', '_blank')" class="btn btn-primary btn-linkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                  </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
