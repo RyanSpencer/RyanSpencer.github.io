@@ -9,7 +9,7 @@ var request = new XMLHttpRequest(),
     techKeyColumns = "row-cols-4",
     projectComp = { props: ['project'], methods: {
         getImageUrl: function (image) {
-            return 'background-image: url("vueportfolio/data/' + image +'")';
+            return 'background-image: url("data/' + image +'")';
         }
     },
     template: `
@@ -305,5 +305,5 @@ request.onload  = function() {
     }
 request.responeType = 'json';
 
-request.open('GET', 'vueportfolio/data/projects.json');
+request.open('GET', 'data/projects.json');
 request.send();

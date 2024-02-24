@@ -90,7 +90,7 @@
                             Provided 1 on 1 guidance to individual students as needed
                         </li>
                     </ul>
-            <a class="btn btn-primary resume-button" role="button" href="vueportfolio/data/Ryan_Spencer_Resume_2021.pdf" target="_blank">Download Resume</a>
+            <a class="btn btn-primary resume-button" role="button" href="data/Ryan_Spencer_Resume_2021.pdf" target="_blank">Download Resume</a>
             </div>
         </div>
         <div>
@@ -174,7 +174,7 @@
                                   </a>
                               </div>
                             <div id="modalImage" v-else>
-                                <img v-bind:src="'vueportfolio/data/' + modalInfo.image" class="d-block w-100" alt="...">
+                                <img v-bind:src="'data/' + modalInfo.image" class="d-block w-100" alt="...">
                             </div>
                             <div class="modal-details">{{modalInfo.details}}</div>
                             <div class="modal.tags">
@@ -184,7 +184,7 @@
                         <div class="modal-footer">
                             <a v-if="modalInfo.link" v-bind:href="modalInfo.link" class="btn btn-info" target="_blank">Link</a>
                             <a v-if="modalInfo.git" v-bind:href="modalInfo.git" target="_blank">
-                                <img class="git-image" src="vueportfolio/data/images/Github.png">
+                                <img class="git-image" src="data/images/Github.png">
                             </a>
                           </div>
                     </div>
