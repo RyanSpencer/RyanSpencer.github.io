@@ -5,7 +5,7 @@
 		"description": "Multiplayer JavaScript physics-based game that supports multiple rooms and 8 player multiplayer.",
 		"details": "Orbit Rings is a multiplayer physics-based game developed in JavaScript to run through canvas. The primary loop involves playing as planets driving around bumper cars trying to hit each other to deal damage, with the more damage being dealt based on how much speed the player hitting has over the player being hit. The game was originally developed as a simple JavaScript app, later being updated as part of a 3 person project to bring it into node and introducing a room system built with sockets, where players can host and join separate rooms of up to 8. The game also has mocked up design for banner ads for a hypothetical pay model, and has royalty free music along with custom made graphics. ",
 		"git": "https://github.com/RyanSpencer/Orbit-Rings",
-		"link": "https://orbitringsfinal.herokuapp.com/",
+		"link": "https://orbit-rings.onrender.com",
 		"tags": [
 			"javascript",
 			"multiplayer",
@@ -61,7 +61,7 @@
 		"image": "images/HarlemCoin.png",
 		"description": "A game jam 2nd platformer created over a 72 hour time period in Unity based on the theme of Everyday Heroes.",
 		"details": "Harlem Coin Hero was made for the Herojam gamejam in Unity. The game is a 2d platformer that involves using a character with two coin-based abilities they can flip back and forth from. The game included Near finished gameplay mechanics, UI, a modeled main character, and an entire first level. The game was made in 72 hours in a team of 5, with my focus being on UI design and implementation.",
-		"link": "vueportfolio/data/Coin_Flip_Hero/conflip.html",
+		"link": "data/Coin_Flip_Hero/conflip.html",
 		"git": "https://github.com/Likewise42/HeroJam2k17",
 		"tags": [
 			"unity",
@@ -75,7 +75,7 @@
 		"image": "images/OsuToMal.png",
 		"description": "A Web app designed to utilize to data from one API to query the other API.",
 		"details": "MAL to Osu is a web app that takes APIs for myanimelist.com and Osu and searches for recent ranked Osu maps based on their source. The sources it searches for are the anime that the user has on their myanimelist.com account. Most of the work is done in JavaScript converting xml and json data into information that can be displayed on the webpage. After MAL brought down their API until further notice I transferred the application to work with popular competitor AniChart. The change also removed the need to parse xml as AniChart sends all information in JSON. I also extended functionality by changing to capture the last twenty weeks’ worth of maps and parse them instead of just the top 500. This is still a temporary measure due to the failure of the Osu API to allow search by source, but it results in more information than previous solutions.",
-		"link": "https://mal-to-osu-app.herokuapp.com/",
+		"link": "https://anitoosu.onrender.com",
 		"git": "https://github.com/RyanSpencer/AniToOsu",
 		"tags": [
 			"javascript",
@@ -89,7 +89,7 @@
 		"image": "images/Giffull.png",
 		"description": "Multiplayer Web app that allows players to play a short drawing-based game.",
 		"details": "I created this game in early 2017 for my Real Time Web Development class. The game is based off the game Drawful for the Jackbox Party Pack. In this game, players each draw a picture based of a small prompt. Then one at a time, all the other players see the image and enter a guess as to what the image is. Next, all guesses are displayed along with the correct answer and the players must guess what the correct answer is. This differs by the game using shorts gifs, having the player draw 20 frames that are played at about 10 frames per second for a total of 2 seconds. The game was programmed in JavaScript with NPM and socket.io to connect players.",
-		"link": "https://giffull.herokuapp.com",
+		"link": "https://gifful.onrender.com",
 		"git": "https://github.com/RyanSpencer/RealTimeProject1",
 		"tags": [
 			"javascript",
@@ -139,7 +139,7 @@
 		"image": "images/gatchamonogatari.png",
 		"description": "A user account-based application using a database back end to store information for users and using Redis to keep session data.",
 		"details": "Gatchamonogatari is full stack web application, backboned by a user registration system. The user accounts are stored permanently in the database, along with various information about their account. Redis is used to persist a user login and allow them to retain a session id. The webpage uses a web templates that use dynamic web component built with React. It also uses cserf to securely communicate occasionally between the server and client.",
-		"link": "https://gatchamonogatari.herokuapp.com",
+		"link": "https://gatchamonogatari.onrender.com",
 		"git": "https://github.com/RyanSpencer/RichMediaProject2",
 		"tags": [
 			"javascript",
@@ -157,7 +157,7 @@
 		"image": "images/FireEmblemHeroes.png",
 		"description": "A team builder app for the Fire Emblem Heroes mobile game that uses API to fetch data, and then crunches the data to create a series of inputs the user can edit, which is then encrypted and saved locally.",
 		"details": "This is a team builder using an API that gathers data about Fire Emblem Heroes Characters. The application allows you to build 4 person teams and temporarily store them. The majority of the work was spent on utilizing the data from the API and applying restrictions on the attributes of the heroes to only allow heroes to equip skills they have access to.",
-		"link": "https://fire-emblem-heroes-team-builde.herokuapp.com",
+		"link": "https://fire-emblem-heroes-team-builder.onrender.com",
 		"git": "https://github.com/RyanSpencer/RichMediaProject1",
 		"tags": [
 			"javascript",
