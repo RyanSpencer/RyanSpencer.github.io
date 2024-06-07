@@ -125,7 +125,7 @@ request.onload  = function() {
         },
         {
             name: "C#",
-            score: 3
+            score: 4
         },
         {
             name: "C++",
