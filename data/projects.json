@@ -21,7 +21,7 @@
 		"gallery": ["images/Anime1.png", "images/Anime2.png", "images/Anime3.png"],
 		"description": "Simple website meant to show off a simple tutorial.",
 		"details": "How to Discover New Anime is a website coded during 2016 as a project for Web Design and Development. I chose the subject matter based on a panel I led at ToraCon 2016 on Anime. The website is coded entirely in HTML and CSS, worked on in notepad. All images used were cited on the documentation page. The design uses a triad of colors that work well together and different shades of those colors to create a design that is eye popping but still visually pleasing. The Center based design uses only the middle of the screen to make it easier to react to different screen sizes. The Text on white on red allows each step to feel distinct while having the text easily readable. The text is also slightly blue to work well with the overall background. The nav bar used a styled list of links to replicate the feeling of buttons.",
-		"link": "https://spencer-portfolio.com/project1/index.html",
+		"link": "https://spencer-portfolio.com/data/project1/index.html",
 		"tags": [
 			"html & css"
 		]
@@ -50,7 +50,7 @@
 		"image": "images/AudioVis.png",
 		"description": "An HTML page that utilizes an algorithm to visualize music in a way that is customized to the user.",
 		"details": "Audio Visualizer is a project I created in 2016 for Rich Media Web Development. Using given algorithms that can interpret music data and return frequency information, the web app shows designs based on that data and other fun interactions. Options included allowing the user to activate or deactivate various functions. Another main function includes a KIDZ BOP filter that will attempt to play a KIDZ BOP version of what track is playing if possible. The website has minimal HTML and CSS and mostly works through JavaScript editing the canvas.",
-		"link": "https://spencer-portfolio.com/web-audio-prototype/index.html",
+		"link": "https://spencer-portfolio.com/data/web-audio-prototype/index.html",
 		"tags": [
 			"javascript",
 			"html & css"

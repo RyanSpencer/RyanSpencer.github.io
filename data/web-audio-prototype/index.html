@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Web Audio Visualizer</title>
+    <link href="http://fonts.googleapis.com/css?family=Arimo" rel="stylesheet"> 
+    <link  type="text/css" rel="stylesheet" href="css/myCss.css">
+   
+	<script>
+	// An IIFE ("Iffy") - see the notes in mycourses
+	(function(){
+		"use strict";
+		
+        //Variables!
+		var NUM_SAMPLES = 256;
+		var SOUND_1 = 'ObjectofDesire';
+		var audioElement; //Audio Player
+		var analyserNode, distortionNode; //Nodes
+		var canvas,ctx; //Canvas Junk
+        var hornElement, dankMemes = false, horn = new Image(), time = 0, hornRotate =0; //All this just for an airhorn meme
+        var distortion = 0, boneSquad = false, wave = false, gradientCircle, back = new Image(), backOpacity =  0; //remaining effect check
+        var effects = [false, false, false, false, false, false]; //Noise, TintRed, Greyscale, Lines, Invert
+
+		function init(){
+			// set up canvas stuff
+			canvas = document.querySelector('canvas');
+			ctx = canvas.getContext("2d");
+			
+			// get reference to <audio> element on page and establish the other aduio element
+			audioElement = document.querySelector('audio');
+            hornElement = new Audio('media/Airhorn.mp3');
+			
+			// call our helper function and get an analyser node
+			analyserNode = createWebAudioContextWithAnalyserNode(audioElement);
+			
+			// get sound track <select> and Full Screen button working
+			setupUI();
+			
+			// load and play default sound into audio element
+			playStream(audioElement,SOUND_1, 0);
+			
+			// start animation loop
+			update();
+		}
+		
+		
+		function createWebAudioContextWithAnalyserNode(audioElement) {
+			var audioCtx, analyserNode, sourceNode;
+			// create new AudioContext
+			// The || is because WebAudio has not been standardized across browsers yet
+			// http://webaudio.github.io/web-audio-api/#the-audiocontext-interface
+			audioCtx = new (window.AudioContext || window.webkitAudioContext);
+			
+			// create an analyser node
+			analyserNode = audioCtx.createAnalyser();
+            //Create distortion node
+            distortionNode = audioCtx.createWaveShaper();
+            distortionNode.curve = makeDistortionCurve(0);
+            
+			/*
+			We will request NUM_SAMPLES number of samples or "bins" spaced equally 
+			across the sound spectrum.
+			s
+			If NUM_SAMPLES (fftSize) is 256, then the first bin is 0 Hz, the second is 172 Hz, 
+			the third is 344Hz. Each bin contains a number between 0-255 representing 
+			the amplitude of that frequency.
+			*/ 
+			
+			// fft stands for Fast Fourier Transform
+			analyserNode.fftSize = NUM_SAMPLES;
+			
+			// this is where we hook up the <audio> element to the analyserNode
+			sourceNode = audioCtx.createMediaElementSource(audioElement); 
+            
+            
+            //Hook up source through distortion to anaylser
+			sourceNode.connect(distortionNode);
+            distortionNode.connect(analyserNode);
+			
+			// here we connect to the destination i.e. speakers
+			analyserNode.connect(audioCtx.destination);
+			return analyserNode;
+		}
+		
+		function setupUI(){
+            //load background image
+            back.src = "media/snoop.gif";
+            //Change track
+			document.querySelector("#trackSelect").onchange = function(e){
+				playStream(audioElement,e.target.value, 0);
+			};
+			
+            //Fullscreen mode
+			document.querySelector("#fsButton").onclick = function(){
+				requestFullscreen(canvas);
+			};
+            //Whenever clicked, play the audido clip and active a bool and time variable for image manipulation
+            document.querySelector("#Airhorn").onclick = function() {
+                hornElement.currentTime = 0;
+                hornElement.volume = .4;
+                hornElement.play();
+                horn.src = "media/air_horn.png";
+                dankMemes = true;
+                time = 90;
+            }
+            
+            //There is an array for all standard editing effects on the canvas done by getting image data
+            document.querySelector("#standardEffects").onchange = function(e){
+                var selection = e.target.value;
+                //sets all the effects to false when one is chosen
+                for (var i = 0; i < effects.length; i++)
+                    {
+                        effects[i] = false; 
+                    }
+                effects[selection] = true;
+            }
+            //Changes distortion effect
+            document.querySelector("#slider").onchange = function(e){
+				distortion = e.target.value;
+			 };
+            //Actives bezier curves
+            document.querySelector("#checkbox1").onchange = function(e){
+                boneSquad = e.target.checked;
+            };
+            //Switches between wave and frequency data
+            document.querySelector("#checkbox2").onchange = function(e){
+                wave = e.target.checked;
+            };
+            //Activates the gradient circle
+            document.querySelector("#checkbox3").onchange = function(e){
+                gradientCircle = e.target.checked;
+            };
+            //Switches between kids bop and normal versions, by getting the time stamp and passing it into playstream
+            //Important to note that the code just assumes that a kids bop version is there, if checked on a song without
+            //one it will just play nothing.
+            document.querySelector("#kidsBop").onchange = function(e) {
+                var time = document.querySelector('#audioPlay').currentTime;
+                if (e.target.checked) {
+                    playStream(audioElement, document.querySelector("#trackSelect").value + " (KidzBop)", time);
+                    }
+                else  {
+                    playStream(audioElement, document.querySelector("#trackSelect").value, time);
+                }
+            };
+            document.querySelector("#slider2").onchange = function(e) {
+              backOpacity = e.target.value;  
+            };
+		}
+		
+        //Play the audio at the inputed path
+		function playStream(audioElement,path, time){
+            //Uses a standard path since all audio tracks are at the same location
+			audioElement.src = "media/" + path + ".mp3";
+            audioElement.currentTime = time;
+            audioElement.play();
+
+			audioElement.volume = 0.2;
+			document.querySelector('#status').innerHTML = "Now playing: " + path;
+		}
+		
+		function update() { 
+			// this schedules a call to the update() method in 1/60 seconds
+			requestAnimationFrame(update);
+			
+			/*
+				Nyquist Theorem
+				http://whatis.techtarget.com/definition/Nyquist-Theorem
+				The array of data we get back is 1/2 the size of the sample rate 
+			*/
+			
+			// create a new array of 8-bit integers (0-255)
+			var data = new Uint8Array(NUM_SAMPLES/2); 
+			
+            // populate the array with the frequency data
+			// notice these arrays can be passed "by reference" 
+            if (wave)
+                analyserNode.getByteTimeDomainData(data); // waveform data
+            else
+                analyserNode.getByteFrequencyData(data);
+            
+            //Distortion is turned off completely if its effect is at zero, other call the function to make a distortion curve
+            if (distortion == 0)
+                    distortionNode.curve = null;
+            else 
+                    distortionNode.curve = makeDistortionCurve(distortion);
+                
+            
+			// DRAW!
+			ctx.clearRect(0,0,1280,720);
+            
+            //Sets the opactiy to draw the image then resets it
+            ctx.globalAlpha = backOpacity;
+            ctx.drawImage(back, 640 - back.width/2, 0);
+            ctx.globalAlpha = 1;
+            
+            //pre set variables for size adjusment.
+			var circleWidth = 4;
+            var barWidth = 10;
+			var barHeight = 100;
+			var topSpacing = 370;
+			// loop through the data and draw!
+			for(var i = 0; i<data.length; i++) { 
+                
+                //Setting up the faded out green bars
+                ctx.fillStyle = 'rgba(0,255,0,0.15)'; 
+				ctx.fillRect(i * (barWidth),topSpacing + 256-data[i],barWidth,barHeight + data[i]); 
+                
+
+                //Utilized code on here http://krazydad.com/tutorials/makecolors.php to make rainbow
+                ctx.fillStyle = makeColor(parseInt(Math.sin(.3 *(i%33) + 0) * 127 + 128), parseInt(Math.sin(.3 * (i%33) + 2) * 127 + 128), parseInt(Math.sin(.3 * (i%33) + 4) * 127 + 128), 1);
+
+                ctx.strokeStyle = makeColor(parseInt(Math.sin(.3 *(i%33) + 0) * 127 + 128), parseInt(Math.sin(.3 * (i%33) + 2) * 127 + 128), parseInt(Math.sin(.3 * (i%33) + 4) * 127 + 128), 1);
+                
+                //Call for the main circle disp;ay
+                circle(data[i], circleWidth, i);
+                
+                //Only displays bezier curve if it is active
+                if (boneSquad)
+                    {
+                        ctx.fillStyle = "white";
+                        ctx.beginPath();
+                        ctx.moveTo(i * 5 ,0);
+                        ctx.quadraticCurveTo(i * 5, data[i], (i + 1) * 5, 0);
+                        ctx.fill();
+                        ctx.beginPath();
+                        ctx.moveTo(canvas.width + (-i * 5) ,0);
+                        ctx.quadraticCurveTo(canvas.width + (-i * 5), data[i], canvas.width + (-(i + 1) * 5), 0);
+                        ctx.fill();
+                    }
+                //only dispaly gradient circle if it is active
+                if (gradientCircle)
+                    {
+                        gradCicle(i, data);
+                    }
+                
+			}
+            //Only display airhorn if it is active
+            if (dankMemes)
+                {
+                    airhornMemes();
+                }
+                    
+        var active = false;
+        for (var i = 0; i < effects.length - 1; i++)
+            {
+                //Checks if any visual effects that involve get image data are acive
+                if (effects[i])
+                    active =true;
+            }
+        //if so then call manipulate pixels, calling it causes large lag at least on firefox so not calling
+        // it when uneeded makes it run much better
+        if (active)
+            ManipulatePixels(); 
+		}
+        
+        
+        //Draws the quater circles on the top left and right
+        function gradCicle(i, data) {
+            
+            //create a standard rainbow gradient, it centers at the center of the circle due rotation
+            //so the higher the frequency the farther from the beginning of the rainbow
+            var grd = ctx.createLinearGradient(0, 50, 0, 200);
+                
+            grd.addColorStop(0, "red");
+            grd.addColorStop(.166, "orange");
+            grd.addColorStop(.333, "yellow");
+            grd.addColorStop(0.5, "green");
+            grd.addColorStop(.666, "turquoise");
+            grd.addColorStop(.833, "blue");
+            grd.addColorStop(1, "purple");
+            
+            ctx.strokeStyle = grd;
+        
+            //Draw the quater circle by rotating 90 degrees in 128 incraments.
+            // But in the negative so its in the bottom right of a unit circle
+            ctx.lineWidth = 5;
+            ctx.save();
+            ctx.beginPath();
+            ctx.rotate(-((90/128) * i) * (Math.PI/180) );
+            ctx.moveTo(0,  data[i] + 50);
+            ctx.lineTo(1, data[i+1] + 50);
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore();
+            
+            //Similar to previous except rotating in possitive so its in the bottom left
+            ctx.save();
+            ctx.beginPath();
+            ctx.translate(canvas.width, 0);
+            ctx.rotate((((90/128) * i)) * (Math.PI/180) );
+            ctx.moveTo(0,  data[i] + 50);
+            ctx.lineTo(1, data[i+1] + 50);
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore();
+            ctx.lineWidth = 1;
+        }
+        //Creates the airhorn
+        function airhornMemes () {
+            //only actives when the image is loaded
+            if (horn.complete)
+                    {
+                        //changes the rotation degree only once every 15 decreases of time for maximum jank
+                        if (time % 15 == 0 && time > 15 && time != 0)
+                        {
+                            hornRotate = 50 * (Math.PI/180)
+                        }
+                    
+                    //Each horn is drawn from the center for rotation, and are opposite rotation of each other
+                    ctx.save();
+                    ctx.translate(canvas.width/5, canvas.height/5) 
+                    ctx.rotate(hornRotate)
+                    ctx.drawImage(horn, -horn.width/2, -horn.height/2);
+                    ctx.restore();
+                            
+                    hornRotate *= -1; 
+                            
+                    ctx.save();
+                    ctx.translate(4 * canvas.width/5, canvas.height/5) 
+                    ctx.rotate(hornRotate)
+                    ctx.drawImage(horn, -horn.width/2, -horn.height/2);
+                    ctx.restore();
+                        
+                    }
+            //As long as time is more than zero decrease time, else reset time and disable the airhorn image
+            if (time > 0) {
+                time--;
+            }
+            else {
+                time = 0;
+                dankMemes = false;
+            }
+        }
+        
+        //Draw the main circles on the screen
+        function circle(dataStuff, circleWidth, i) {
+            
+            //Drawing the center circle
+            ctx.save();
+            ctx.translate(canvas.width/2, canvas.height/2); 
+            ctx.rotate(((360/128) * i) * (Math.PI/180) ); //rotate over 360 degress in 128 incramnets
+            
+            //only displays solid circles if the frequency is not zero
+            if (dataStuff > 0)
+                    {
+                        ctx.beginPath();
+                        ctx.arc(0, 256 - dataStuff, circleWidth, 0, Math.PI * 2, false);
+                        ctx.fill();
+                        ctx.closePath();
+                    }
+            //Display the open circles always
+            ctx.beginPath();
+            ctx.arc(0, 256, circleWidth, 0, Math.PI * 2, false);
+            ctx.stroke();
+            ctx.closePath();                
+            ctx.restore();
+            
+            //draw the small left circle
+            ctx.save();
+            ctx.translate(canvas.width/6, (2 *canvas.height)/3);
+            ctx.rotate(-((360/128) * i) * (Math.PI/180) );//rotate over 360 degress in 128 incramnets
+            //only displays solid circles if the frequency is not zero
+            if (dataStuff > 0)
+                    { 
+                        ctx.beginPath();
+                        ctx.arc(0, 128 - (dataStuff * 0.5), circleWidth, 0, Math.PI * 2, false);
+                        ctx.fill();
+                        ctx.closePath();
+                    }
+            //Display the open circles always
+            ctx.beginPath();
+            ctx.arc(0, 128, circleWidth, 0, Math.PI * 2, false);
+            ctx.stroke();
+            ctx.closePath();  
+            ctx.restore();
+            
+            //display the small right circle
+            ctx.save();
+            ctx.translate((5 *canvas.width/6), (2 *canvas.height)/3);
+            ctx.rotate(-((360/128) * i) * (Math.PI/180) );//rotate over 360 degress in 128 incramnets
+            //only displays solid circles if the frequency is not zero
+            if (dataStuff > 0)
+                    {      
+                    ctx.beginPath();
+                    ctx.arc(0, 128 - (dataStuff * .5), circleWidth, 0, Math.PI * 2, false);
+                    ctx.fill();
+                    ctx.closePath();
+                    }
+            //Display the open circles always
+            ctx.beginPath();
+            ctx.arc(0, 128, circleWidth, 0, Math.PI * 2, false);
+            ctx.stroke();
+            ctx.closePath();  
+            ctx.restore();
+        }
+        
+        //Function that gets image date to due after draw procesing
+        function ManipulatePixels() {
+            
+            //Get general data
+            var imageData =ctx.getImageData(0, 0, canvas.width, canvas.height);
+            var data = imageData.data;
+            var length = data.length;
+            var width = imageData.width;
+            
+            //loop in incraments of four where i is red, i+1 is green, i+2 is blue, i+3 is alpha
+            for (var i = 0; i < length; i+= 4)
+                {
+                    //Tint red
+                    if (effects[1]){
+                        data[i] = data[i] + 100;
+                    }
+                    //Invert
+                    if (effects[4]){
+                        var red = data[i], green = data[i + 1], blue = data[i+2];
+                        data[i] = 255 - red;
+                        data[i+1] = 255 - green;
+                        data[i+2] = 255 - blue;
+                    }
+                    //Random Noise
+                    if (effects[0] && Math.random() < .10){
+                        data[i] = data[i+1] = data[i+2] = 128;
+                        data[i+3] = 255;
+                    }
+                    //Lines
+                    if (effects[3]) {                        
+                        var row = Math.floor(i/4/width);
+                        if (row % 50 == 0){
+                            data[i] = data[i+1] = data[i+2] = data[i+3] = 255;
+                            
+                            data[i + (width*4)] =
+                            data[i + (width*4) + 1] =
+                            data[i + (width*4) + 2] =
+                            data[i + (width*4) + 3] = 255;
+                        }
+                                
+                    }
+                    //Greyscale
+                    if (effects[2])
+                        {
+                            data[i] = data[i + 1] = data[i + 2];
+                        }
+                }
+
+             ctx.putImageData(imageData, 0, 0);
+           
+        }
+		
+		// HELPER
+		function makeColor(red, green, blue, alpha){
+   			var color='rgba('+red+','+green+','+blue+', '+alpha+')';
+   			return color;
+		}
+		
+		 // FULL SCREEN MODE
+		function requestFullscreen(element) {
+			if (element.requestFullscreen) {
+			  element.requestFullscreen();
+			} else if (element.mozRequestFullscreen) {
+			  element.mozRequestFullscreen();
+			} else if (element.mozRequestFullScreen) { // camel-cased 'S' was changed to 's' in spec
+			  element.mozRequestFullScreen();
+			} else if (element.webkitRequestFullscreen) {
+			  element.webkitRequestFullscreen();
+			}
+			// .. and do nothing if the method is not supported
+		};
+        //https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode
+        //Creates distortion curve
+        function makeDistortionCurve(amount) {
+            var k = typeof amount === 'number' ? amount : 50,
+            n_samples = 44100,
+            curve = new Float32Array(n_samples),
+            deg = Math.PI / 180,
+            i = 0,
+            x;
+            for ( ; i < n_samples; ++i ) {
+                x = i * 2 / n_samples - 1;
+                curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
+            }
+            return curve;
+        };		
+		window.addEventListener("load",init);
+	}());
+		
+	</script>
+</head>
+<body>
+    <div id="wrapper">
+        <canvas id="canvas" width="1280" height="720"></canvas>
+        <div id="controls1">
+            <p id="status">???</p>
+            <p><audio id="audioPlay" controls loop></audio></p>
+            <p><label>Track: 
+                <select id="trackSelect" >
+                    <option value="ObjectofDesire">Object of Desire</option>
+                    <option value="Downtown">Downtown</option>
+                    <option value="Glowing Eyes">Glowing Eyes</option>
+                    <option value="Blood Sugar (Fixed Point Remix)">Blood Sugar (Fixed Point Remix)</option>
+                    <option value="UptownFunk">Uptown Funk</option>
+                    <option value="Sweet Melty Memes">Sweet Melty Memes</option>
+                    <option value="Bring Me to Life">Bring Me to Life</option>
+                    <option value="StressedOut">Stressed Out</option>
+                    <option value="My Shot">My Shot</option>
+                </select>
+                </label></p>
+            <p><label for="kidsBop">Kids Bop Filter</label>
+            <input id="kidsBop" type="checkbox" /></p>
+            <p><button id="Airhorn">360 NO SCOPE</button></p>
+           <p><label for="slider">Distortion</label>
+            <input id="slider" min="0" max="400" step="10" value="0" type="range"/></p>
+        </div>
+        <div id="controls2">
+
+            <p><button id="fsButton">Go Full Screen</button></p>
+            
+            <p><label>Standard Effects
+                <select id="standardEffects">
+                    <option value="0">Noise</option>
+                    <option value="1">Tint Red</option>
+                    <option value="2">Grey Scale</option>
+                    <option value="3">Lines</option>
+                    <option value="4">Invert</option>
+                    <option value="5">Normal</option>
+                </select>
+            </label></p>
+            
+            <p><input id="checkbox1" type="checkbox" /> 
+            <label for="checkbox1">Cue the Descending Bones</label></p>
+
+            <p><input id="checkbox2" type="checkbox" /> 
+            <label for="checkbox2">OH DEAR GOD THE WAVE FORM</label></p>
+            
+            <p><input id="checkbox3" type="checkbox"/>
+            <label for="checkbox3">Gradient Circles</label></p>
+            
+            <p><label for="slider2">Background</label>
+            <input id="slider2" min="0" max="1" step="0.1" value="0" type="range"/></p>
+
+        </div>
+    </div>
+</body>
+</html>
